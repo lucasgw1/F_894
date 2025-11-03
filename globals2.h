@@ -22,7 +22,7 @@ extern const int upPin, downPin, selectPin;
 
 ////
 // Navigation Variables
-extern int cursor, menuState;
+extern int cursor, startIdx, menuState;
 
 extern int yellowPin;
 extern int yellowState;

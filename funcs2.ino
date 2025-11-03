@@ -18,14 +18,16 @@ void WelcomeScreen() {
 // Function to manage the main menu screen
 
 void displayMenu() {
-  int startIdx = 0;
   int numoptions = menulist[menuState].itemCount;
 
   lcd.clear();
 
   // Check which option will be printed in the first line of the LCD
-  if (cursor > 3) {
+  if (cursor > startIdx + 3) {
     startIdx = cursor - 3;
+  }
+  if (cursor < startIdx) {
+    startIdx = cursor;
   }
   // Don't allow infinite scrolling
   if (startIdx > numoptions - 4) {

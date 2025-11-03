@@ -15,6 +15,7 @@ const int selectPin = 4;
 ////
 // Navigation Variables
 int cursor = 0;
+int startIdx = 0;
 int menuState = 0;
 
 int yellowPin = 5;

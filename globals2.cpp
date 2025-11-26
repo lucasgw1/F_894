@@ -3,7 +3,7 @@
 
 ////
 // LCD Connection Variables
-const int rs = 8, en = 9, d4 = 10, d5 = 11, d6 = 12, d7 = 13;
+const int rs = 7, en = 8, d4 = 9, d5 = 10, d6 = 11, d7 = 12;
 LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
 
 ////

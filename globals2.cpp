@@ -18,43 +18,43 @@ int cursor = 0;
 int startIdx = 0;
 int menuState = 0;
 
-int yellowPin = 5;
-int yellowState = 0;
-
 
 ////
 // Menu Variables
+const int photoPin = A0;
+String resultado = "R: ---";
+
 void openSub1() {menuState = 1; cursor = 0;}
 void openSub2() {menuState = 2; cursor = 0;}
-void openSub3() {menuState = 3; cursor = 0;}
-void openSub4() {menuState = 4; cursor = 0;}
-void openSub5() {menuState = 5; cursor = 0;}
 void goBack() {menuState = menulist[menuState].parent; cursor = 0;}
-void yellowLed() {
-  digitalWrite(yellowPin, yellowState ? HIGH : LOW);
-  yellowState = !yellowState;
+void medir() {
+  int sensor = analogRead(photoPin);
+  float voltage = sensor * (5.0/1023.0);
+
+  if (voltage >= 0.2) {
+    resultado = "R: Adulterado";
+  }
+  else {
+    resultado = "R: Normal";
+  }
+
 }
+void nada() {}
 
-const char* mainItens[] = {"Option 1", "Option 2", "Option 3", "Option 4", "Option 5"};
-const char* sub1Itens[] = {"Yellow Led", "Back"};
-const char* sub2Itens[] = {"Back"};
-const char* sub3Itens[] = {"Back"};
-const char* sub4Itens[] = {"Back"};
-const char* sub5Itens[] = {"Back"};
 
-MenuAction mainActions[] = {openSub1, openSub2, openSub3, openSub4, openSub5};
-MenuAction sub1Actions[] = {yellowLed, goBack};
+const char* mainItens[] = {"Etanol/Metanol", "Gas/Metanol"};
+const char* sub1Itens[] = {"Medir", resultado.c_str(), "Voltar"};
+const char* sub2Itens[] = {"Voltar"};
+
+
+MenuAction mainActions[] = {openSub1, openSub2};
+MenuAction sub1Actions[] = {medir, nada, goBack};
 MenuAction sub2Actions[] = {goBack};
-MenuAction sub3Actions[] = {goBack};
-MenuAction sub4Actions[] = {goBack};
-MenuAction sub5Actions[] = {goBack};
+
 
 Menu menulist[] = {
   {mainItens, mainActions, ARRAY_SIZE(mainItens), -1},
   {sub1Itens, sub1Actions, ARRAY_SIZE(sub1Itens), 0},
   {sub2Itens, sub2Actions, ARRAY_SIZE(sub2Itens), 0},
-  {sub3Itens, sub3Actions, ARRAY_SIZE(sub3Itens), 0},
-  {sub4Itens, sub4Actions, ARRAY_SIZE(sub4Itens), 0},
-  {sub5Itens, sub5Actions, ARRAY_SIZE(sub5Itens), 0},
 };
 

@@ -5,13 +5,13 @@
 void WelcomeScreen() {
   lcd.clear();
 
-  lcd.print("Welcome to the:");
+  lcd.print("Sensor óptico");
   lcd.setCursor(0,1);
-  lcd.print("Schizophrenia Menu!");
+  lcd.print("de Adulteração");
   lcd.setCursor(0,2);
-  lcd.print("v0.0.0.0.1");
+  lcd.print("v0.5");
   lcd.setCursor(0,3);
-  lcd.print("by: Luscao");
+  lcd.print("União Fotônica");
 }
 
 ////
